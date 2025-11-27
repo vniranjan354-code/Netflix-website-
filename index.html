@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Netflix — Simple Clone</title>
+  <style>
+    /* Basic reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: radial-gradient(ellipse at top left,#0b0f17 0%, #08090b 40%, #050506 100%);
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.15;
+    }
+
+    /* Header */
+    .header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:18px 32px;
+      background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.15));
+      position:sticky;top:0;z-index:10;
+    }
+    .logo{
+      font-weight:800;letter-spacing:2px;font-size:24px;color:#e50914;
+    }
+    .nav{
+      display:flex;gap:18px;align-items:center;
+    }
+    .nav a{color:#ddd;text-decoration:none;font-size:14px}
+    .btn{
+      background:#e50914;color:#fff;border:none;padding:8px 14px;border-radius:4px;cursor:pointer;font-weight:600;
+    }
+
+    /* Hero */
+    .hero{
+      padding:56px 6vw;display:flex;gap:40px;align-items:center;flex-wrap:wrap;
+    }
+    .hero-copy{flex:1 1 420px;max-width:760px}
+    .eyebrow{background:#e50914;color:#fff;padding:6px 10px;border-radius:4px;display:inline-block;margin-bottom:18px;font-weight:700;font-size:13px}
+    h1{font-size:48px;line-height:1.02;margin-bottom:14px}
+    p.lead{font-size:18px;color:#d6d6d6;margin-bottom:20px}
+
+    /* Browse grid */
+    .rows{padding:20px 6vw 80px}
+    .row{margin-bottom:26px}
+    .row h3{font-size:18px;margin-bottom:12px}
+    .cards{display:flex;gap:12px;overflow:auto;padding-bottom:6px}
+    .card{min-width:150px;height:220px;border-radius:6px;background:linear-gradient(180deg, #222, #111);flex:0 0 150px;position:relative;display:flex;align-items:flex-end;padding:12px;color:#fff}
+    .card::before{
+      content:'';position:absolute;inset:0;border-radius:6px;opacity:0.18;background:linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.6));
+    }
+    .card .title{position:relative;font-weight:700;font-size:13px}
+    .card:hover{transform:translateY(-6px) scale(1.03);transition:transform .18s ease;box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+
+    /* Fake posters using gradients */
+    .poster-1{background:linear-gradient(180deg,#b32 0%, #610 90%)}
+    .poster-2{background:linear-gradient(180deg,#2b7 0%, #0a5 90%)}
+    .poster-3{background:linear-gradient(180deg,#27f 0%, #045 90%)}
+    .poster-4{background:linear-gradient(180deg,#f9b 0%, #b83 90%)}
+    .poster-5{background:linear-gradient(180deg,#fb6 0%, #f53 90%)}
+
+    /* Footer */
+    .footer{padding:28px 6vw;border-top:1px solid rgba(255,255,255,0.03);color:#999;font-size:14px}
+
+    /* Responsive */
+    @media (max-width:700px){
+      h1{font-size:32px}
+      .hero{padding:28px 5vw}
+      .card{min-width:120px;height:180px}
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">NETFLIX</div>
+    <nav class="nav">
+      <a href="#">Home</a>
+      <a href="#">TV Shows</a>
+      <a href="#">Movies</a>
+      <button class="btn">Sign In</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">New & Popular</div>
+        <h1>Unlimited movies, TV shows, and more.</h1>
+        <p class="lead">Watch anywhere. Cancel anytime. Explore a curated selection of titles and discover something new to binge tonight.</p>
+        <p><button class="btn">Join Free for a Month</button></p>
+      </div>
+
+      <div style="flex:0 1 340px;min-width:260px;max-width:360px;">
+        <!-- Large featured poster -->
+        <div class="card poster-3" style="height:360px;border-radius:8px;min-width:100%;display:flex;align-items:flex-end;padding:18px;font-size:16px;">
+          <div style="position:relative;z-index:2">
+            <div style="font-weight:800;font-size:20px;margin-bottom:6px">Featured</div>
+            <div style="color:#e6e6e6;max-width:220px">Edge of Tomorrow — action, sci-fi</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rows">
+      <div class="row">
+        <h3>Trending Now</h3>
+        <div class="cards">
+          <div class="card poster-1"><div class="title">Red Horizon</div></div>
+          <div class="card poster-2"><div class="title">Ocean Drift</div></div>
+          <div class="card poster-4"><div class="title">Midnight City</div></div>
+          <div class="card poster-5"><div class="title">Laugh Riot</div></div>
+          <div class="card poster-3"><div class="title">Spacewalk</div></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <h3>Recommended for You</h3>
+        <div class="cards">
+          <div class="card poster-2"><div class="title">Hidden Truths</div></div>
+          <div class="card poster-1"><div class="title">The Last Stand</div></div>
+          <div class="card poster-5"><div class="title">Comedy Nights</div></div>
+          <div class="card poster-4"><div class="title">Romantic Escape</div></div>
+          <div class="card poster-3"><div class="title">Beyond Earth</div></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <h3>Watch It Again</h3>
+        <div class="cards">
+          <div class="card poster-4"><div class="title">Family Tales</div></div>
+          <div class="card poster-1"><div class="title">Thrill Seeker</div></div>
+          <div class="card poster-3"><div class="title">Sci-Fi Saga</div></div>
+          <div class="card poster-2"><div class="title">Wild Adventures</div></div>
+          <div class="card poster-5"><div class="title">Sitcom Hour</div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Questions? Contact us at <span style="color:#ddd">help@example.com</span> • This is a demo clone for learning purposes.
+  </footer>
+</body>
+</html>
